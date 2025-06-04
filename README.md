@@ -8,6 +8,9 @@
 * 當正弦波到達最低點（sin = -1）時 → 輸出的 PWM 是「完全低電位」 ➜ duty = 0%
 * 其他時候 duty 介於 0～100% 之間 ➜ duty ∝ sin 值（比例關係）  
 ![image](https://github.com/user-attachments/assets/b1d5d811-94a3-4d75-aa0d-e2396e067276)
+## Breakdown
+![image](https://github.com/user-attachments/assets/2c41e235-3c52-499c-8ba4-d0345e38b243)
+
 
 ## 規格
 * sine 頻率 : 60Hz
