@@ -70,7 +70,38 @@
 
 ### 規格
 - **UART**
-  - 波特率：9600 / 115200（可選）
+  - 
+## API
+| 名稱          | 類型     | 說明                              |
+| ----------- | ------ | ------------------------------- |
+| `i_clk`     | input  | 系統時脈，來源為 100MHz（經 PLL 處理）       |
+| `i_rst`     | input  | 非同步重置信號，**低電位有效**               |
+| `o_pwm_out` | output | SPWM 輸出訊號，根據 sine LUT 結果調整 duty |
+
+##  架構
+
+| 模組                   | 說明                                          |
+|------------------------|-----------------------------------------------|
+| `SPWM_top.vhd`         | 頂層模組，串接 PLL、除頻器、SPWM_main         |
+| `SPWM_clk_divider.vhd` | 除頻模組，將 1MHz 時脈除以 4096（divide(12)） |
+| `SPWM_main.vhd`        | 核心 SPWM 控制模組，內含 LUT、FSM、PWM 邏輯   |
+| `design_1_wrapper.vhd` | Block Design 自動產生，內含 PLL（1MHz）      |
+| `clk_wiz_0`            | Vivado Clocking Wizard 產生的 PLL IP        |
+| `SPWM_test.xdc`        | 約束檔，設定輸入時脈與 PWM 輸出腳位           |
+| `uart_rx.vhd`           | UART 接收模組，負責從 PS 端或外部終端機接收字元|
+| `axi_interface.vhd`     | AXI-Burst 介面模組，接收 PS 指令並存取控制暫存器 |
+
+
+## PS 端功能 (Processing System)
+
+### 功能概述
+- 提供 SPWM 頻率調整與控制功能
+- 控制 PWM 輸出頻率
+- 接收 UART 指令，控制 PL 中 SPWM 模組，並回傳狀態
+
+### 規格
+- **UART**
+  - 鮑率：9600 / 115200（可選）
   - 支援指令：
     - `SET_FREQ_60`：設定為 60Hz 模式
     - `START`：啟動 PWM 輸出
