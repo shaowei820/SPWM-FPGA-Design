@@ -58,7 +58,7 @@
 | `clk_wiz_0`            | Vivado Clocking Wizard 產生的 PLL IP        |
 | `SPWM_test.xdc`        | 約束檔，設定輸入時脈與 PWM 輸出腳位           |
 | `uart_rx.vhd`           | UART 接收模組，負責從 PS 端或外部終端機接收字元|
-| `axi_interface.vhd`     | AXI-Lite 介面模組，接收 PS 指令並存取控制暫存器 |
+| `axi_interface.vhd`     | AXI-Burst 介面模組，接收 PS 指令並存取控制暫存器 |
 
 
 ## PS 端功能 (Processing System)
@@ -75,7 +75,7 @@
     - `SET_FREQ_60`：設定為 60Hz 模式
     - `START`：啟動 PWM 輸出
     - `STOP`：停止 PWM 輸出
-- **AXI-Lite**
+- **AXI-Burst**
   - 控制暫存器：提供控制訊號給 PL 端
   - 資料暫存器：寫入 SPWM 對應參數給 PL
 
@@ -91,5 +91,5 @@
 - **LUT：256 筆 duty 值資料**
 - **PWM 控制：使用 sin_index (0~255) 進行輸出**
 - **輸出：PWM 控制腳位**
-- **介面：AXI-Lite 與 PS 端溝通**
+- **介面：AXI-Burst 與 PS 端溝通**
 
