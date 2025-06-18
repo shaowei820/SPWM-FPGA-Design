@@ -63,8 +63,6 @@
 
 ## 驗證
 ![image](https://github.com/user-attachments/assets/313c4359-60e6-4936-904a-542b4c408e7e)
-![image](https://github.com/user-attachments/assets/313c4359-60e6-4936-904a-542b4c408e7e)
-
 
 ## PS 端功能 (Processing System)
 
