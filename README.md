@@ -2,12 +2,18 @@
 
 本專案在 FPGA 上實作正弦波脈寬調變（SPWM, Sinusoidal Pulse Width Modulation），並透過 **PLL** 和 **除頻器** 精準產生近似 60Hz 的 SPWM 波形輸出。
 
-
+## 組員及工作分配
+組長  ：徐紹崴 F113111119
+#### 負責SPWM的coding，訂專案需求、規格、API以及issue派工給組員
+組員1 : 曾威璋 F113112138
+#### 負責在 FPGA 上建立一個可以跑 Linux 的 RISC-V 處理器環境
+組員2 : 胡家豪 c110112164
+#### 負責找資料協助威璋
 ## 需求
 * 當正弦波到達最高點（sin =+1）時 → 輸出的 PWM 是「完全高電位」 ➜ duty = 100%
 * 當正弦波到達最低點（sin = -1）時 → 輸出的 PWM 是「完全低電位」 ➜ duty = 0%
 * 其他時候 duty 介於 0～100% 之間 ➜ duty ∝ sin 值（比例關係）  
-![image](https://github.com/user-attachments/assets/b1d5d811-94a3-4d75-aa0d-e2396e067276)
+![Iimage](https://github.com/user-attachments/assets/b1d5d811-94a3-4d75-aa0d-e2396e067276)
 ## Breakdown
 ![image](https://github.com/user-attachments/assets/2c41e235-3c52-499c-8ba4-d0345e38b243)
 
